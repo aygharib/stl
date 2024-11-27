@@ -35,8 +35,9 @@ public:
 
         // it++
         iterator operator++(DataType) {
+            iterator temp = *this; // copy the iterator
             ++data;
-            return *this;
+            return temp;
         }
 
         // friend bool operator
@@ -144,6 +145,7 @@ int main() {
     auto array = Array<int, 5>{};
     array[0] = 10;
     array[1] = 9;
+    array[2] = 8;
 
     std::cout << array.at(0) << '\n';
     std::cout << array[0] << '\n';
@@ -154,9 +156,9 @@ int main() {
     std::cout << *(array.data() + 1) << '\n';
 
     auto it = array.begin();
-    std::cout << *it << '\n';
-    it++;
-    std::cout << *it << '\n';
+    std::cout << "look:\n";
+    std::cout << *(it++) << '\n';
+    std::cout << *(++it) << '\n';
     it = array.end();
     std::cout << *it << '\n';
 
